@@ -30,21 +30,27 @@ if erro := godotenv.Load(".env"); erro != nil {
 }
 </code></pre>
 
-Agora com o comando <code>os.Getenv("NOME_VARIAVEL")</code> obtermos o valor da variável definida no argumento do método.
+Com o comando <code>os.Getenv("NOME_VARIAVEL")</code> obtermos o valor da variável definida no argumento do método.
 <div>
 Exemplo:
 </div>
 <pre><code>
-fmt.Println(os.Getenv("KEY_EMAIL"))
+func TestBuscandoValorDaVariavel(t *testing.T) {
+	if erro := godotenv.Load(".env"); erro != nil {
+		t.Fatal(erro)
+	}
+	fmt.Println(os.Getenv("EMAIL_SENHA"))
+}
 </code></pre>
 <p>
 Caso a variável não existe o método retorna um valor vazio.
 </p>
 
-<h2>2 - Retornando todas as variáveis definida no arquivo <code>.env</code></h2>
+<h2>2 - Retornando todas as variáveis</h2>
 
-O camando <code>godotenv.Read</code> é utilizado para trazer um <code>map[string]string</code> que contém as 
+O camando <code>godotenv.Read</code> é utilizado para trazer um <code>map</code> de <code>string</code> que contém as 
 variáveis definida no arquivo <code>.env</code>.
+
 <div>Exemplo</div>
 
 <pre><code>
