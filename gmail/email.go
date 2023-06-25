@@ -8,8 +8,8 @@ import (
 
 var auth = smtp.PlainAuth(
 	"",
-	"aquilla.tavares7@gmail.com",
-	"wdbdwsfqxggwwyyu",
+	"e-mail",
+	"chave_email",
 	"smtp.gmail.com",
 )
 
@@ -22,8 +22,8 @@ func EmailSimple() error {
 	erro := smtp.SendMail(
 		"smtp.gmail.com:587",
 		auth,
-		"aquilla.tavares7@gmail.com",
-		[]string{"aquila.desenv@gmail.com"},
+		"e-mail@gmail.com",
+		[]string{"email@gmail.com"},
 		[]byte(msg),
 	)
 	return erro
@@ -41,14 +41,14 @@ func EmailComTemplate(templatePath string) error {
 		return erro
 	}
 
-	msg := "From:Rede Point das Baterias<aquilla.tavares7@gmail.com>\n"
-	msg += "To: aquila.desenv@gmail.com\n"
+	msg := "From: Empresa<email@gmail.com>\n"
+	msg += "To: e-mail@gmail.com\n"
 	msg += "Subject: Versículo de Hoje\n" + headers + "\n" + body.String()
-	to := []string{"aquila.desenv@gmail.com"}
+	to := []string{"e-mail@gmail.com"}
 	erro = smtp.SendMail(
 		"smtp.gmail.com:587",
 		auth,
-		"aquilla.tavares7@gmail.com",
+		"email@gmail.com",
 		to,
 		[]byte(msg),
 	)
